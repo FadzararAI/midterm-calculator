@@ -2,3 +2,4 @@ Reference list:
 https://www.codesdope.com/blog/article/c-linked-lists-in-c-singly-linked-list/
 https://medium.com/@almtechhub/multiple-type-linkedlist-in-c-c-1d15f0b08f3e
 https://www.delftstack.com/howto/cpp/print-linked-list-cpp/
+https://www.codementor.io/@codementorteam/a-comprehensive-guide-to-implementation-of-singly-linked-list-using-c_plus_plus-ondlm5azr
