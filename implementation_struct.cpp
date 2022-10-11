@@ -31,6 +31,9 @@ void history(){
 	}
 }
 int main(){
-	
+	add(5);
+	add(10);
+	add(50);
+	history();
 	return 0;
 }
