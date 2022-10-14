@@ -73,5 +73,18 @@ int Queue::Front()
 	}
 	return A[front];
 }
-
+//push the char values
+void Queue::characterEnqueue(char C) {
+    
+    //check if full
+    if (isFull()) {
+        cout << "\n\tOverflow" << endl;
+        return;
+    }
+    else {
+        this->array[this->rear] = C; //put inside the array
+        this->rear = this->rear + 1; //increase the rear
+    }
+    return;
+}
 	
