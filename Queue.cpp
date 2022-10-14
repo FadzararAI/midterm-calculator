@@ -2,6 +2,17 @@
 #include "Queue.h"
 using namespace std; 
 
+Queue::Queue(int size) {
+    this->rear = 0;
+    this->size = size;
+    this->array = new double[size];
+    
+    if (array == NULL){
+    	cout << "Error" << endl;
+    	exit(EXIT_FAILURE);
+	}
+}
+
 	// To check wheter Queue is empty or not
 bool Queue::IsEmpty()
 {
