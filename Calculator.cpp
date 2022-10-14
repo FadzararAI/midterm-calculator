@@ -87,7 +87,7 @@ double Calculator::evaluate(string problem){
 						}
 					}					
 					i--;
-					result = trig(val, n);
+					result = trig(val*pi/180, n);
 				}
 			}
 			values.numEnqueue(result);
@@ -115,7 +115,7 @@ double Calculator::evaluate(string problem){
 						}
 					}
 					i--;
-					result = trig(val, n); 
+					result = trig(val*pi/180, n); 
 				}
 			}
 			values.numEnqueue(result);
@@ -143,7 +143,7 @@ double Calculator::evaluate(string problem){
 						}
 					}					
 					i--;
-					result = trig(val, n);
+					result = trig(val*pi/180, n);
 				}
 			}
 			values.numEnqueue(result);
@@ -178,7 +178,7 @@ double Calculator::evaluate(string problem){
 						}
 					}					
 					i--;
-					result = trig(val, n);
+					result = trig(val*pi/180, n);
 				}
 			}
 			values.numEnqueue(result);
