@@ -1,66 +1,101 @@
+#include"Queue.h"
 #include<iostream>
-#include "Queue.h"
-using namespace std; 
+#include<stdlib.h>
+#include<cmath>
+using namespace std;
 
-	// To check wheter Queue is empty or not
-bool Queue::IsEmpty()
-{
-	return (front == -1 && rear == -1); 
+//Making the new queue
+Queue::Queue(int size) {
+    this->front = 0;
+    this->rear = 0;
+    this->size = size;
+    this->array = new double[size];
+    
+    if (array == NULL){
+    	cout << "Error" << endl;
+    	exit(EXIT_FAILURE);
+	}
 }
 
-	// To check whether Queue is full or not
-bool Queue::IsFull()
-{
-	return (rear+1)%MAX_SIZE == front ? true : false;
+//delete the queue
+Queue::~Queue() {
+    delete[] this->array;
 }
 
-	// Inserts an element in queue at rear end
-void Queue::Enqueue(int x)
-{
-	cout<<"Enqueuing "<<x<<" \n";
-	if(IsFull())
-	{
-		cout<<"Error: Queue is Full\n";
-		return;
-	}
-	if (IsEmpty())
-	{ 
-		front = rear = 0; 
-	}
-	else
-	{
-		rear = (rear+1)%MAX_SIZE;
-	}
-	A[rear] = x;
+//checking if is full
+bool Queue::IsFull() {
+	//full if size equal to rear
+    return (this->size == this->rear);
 }
 
-	// Removes an element in Queue from front end. 
-void Queue::Dequeue()
-{
-	cout<<"Dequeuing \n";
-	if(IsEmpty())
-	{
-		cout<<"Error: Queue is Empty\n";
-		return;
-	}
-	else if(front == rear ) 
-	{
-		rear = front = -1;
-	}
-	else
-	{
-			front = (front+1)%MAX_SIZE;
-	}
-}
-	// Returns element at front of queue. 
-int Queue::Front()
-{
-	if(front == -1)
-	{
-		cout<<"Error: cannot return front from empty queue\n";
-		return -1; 
-	}
-	return A[front];
+//checking if is empty
+bool Queue::IsEmpty(){
+	//empty if the front equal to rear
+    return (this->front == this->rear);
 }
 
+//push the num values
+void Queue::Enqueue(double K) {
 	
+	//check if full
+    if (IsFull()) {
+        cout << "\n\tOverflow" << endl;
+        return;
+    }
+    else {
+        this->array[this->rear] = K; //put inside the array
+        this->rear = this->rear + 1; //increase the rear
+    }
+    return;
+}
+
+//push the char values
+void Queue::characterEnqueue(char C) {
+	
+	//check if full
+    if (IsFull()) {
+        cout << "\n\tOverflow" << endl;
+        return;
+    }
+    else {
+        this->array[this->rear] = C; //put inside the array
+        this->rear = this->rear + 1; //increase the rear
+    }
+    return;
+}
+
+//Queue is First in First out
+//But for the purpose of the calculator
+//We make the queue to Last in First out
+void Queue::Dequeue(){
+	
+	//check if empty
+    if (IsEmpty()){
+        cout << "\n\tUnderflow" << endl;
+        return;
+    }
+    
+    //dequeue with rear-1
+    else {
+        this->rear = this->rear - 1;
+    }
+    return;
+}
+
+//getting the front
+//never used it
+double Queue::getFront(){
+    if (IsEmpty()){
+        cout << "\n\tUnderflow" << endl;
+    }
+	return this->array[this->front];
+}
+
+//getting the rear
+double Queue::getRear(){
+    if (IsEmpty()){
+        cout << "\n\tUnderflow" << endl;
+    }
+	return this->array[this->rear - 1];
+}
+

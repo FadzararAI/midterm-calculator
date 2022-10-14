@@ -1,5 +1,7 @@
 #include"Calculator.h"
 #include"Queue.h"
+#include "Calculator.cpp"
+#include "Queue.cpp"
 #include<iostream>
 #include<stdlib.h>
 #include<cmath>

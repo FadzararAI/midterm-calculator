@@ -1,28 +1,25 @@
 #ifndef QUEUEH
 #define QUEUEH
+
 #include<iostream>
 #include<stdlib.h>
 #include<cmath>
-#define MAX_SIZE 101  
 using namespace std;
 
-class Queue
-{
+class Queue {
 private:
-	int A[MAX_SIZE];
-	int front, rear; 
-public:
-	bool IsEmpty();
-	bool IsFull();
-	void Enqueue(int x); 
-	void Dequeue();
-	int Front();
-		Queue()
-		{
-		front = -1; 
-		rear = -1;
-		}
-
+	int front, rear, size;
+	double* array;
+public :
+    Queue(int size);
+    ~Queue();
+    bool IsFull();
+    bool IsEmpty();
+    void Enqueue(double K);
+    void characterEnqueue(char C);
+    void Dequeue();
+    double getFront();
+    double getRear();
 };
-#endif
 
+#endif

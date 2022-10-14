@@ -47,7 +47,8 @@ double Calculator::trig(double num1, int n){
 }
 //Evaluate the problem
 double Calculator::evaluate(string problem){
-	int i;				
+	int i;
+	double pi = 3.141592;		
 	Queue values(100);	
 	Queue ops(100);	
 	
@@ -61,7 +62,7 @@ double Calculator::evaluate(string problem){
 		
 		//push open bracket to the ops queue
 		else if (problem[i] == '('){
-			ops.charEnqueue(problem[i]);
+			ops.characterEnqueue(problem[i]);
 		}
 		
 		//sin
@@ -90,7 +91,7 @@ double Calculator::evaluate(string problem){
 					result = trig(val*pi/180, n);
 				}
 			}
-			values.numEnqueue(result);
+			values.Enqueue(result);
 		}
 		//cos
 		else if (problem[i] == 'c') {
@@ -118,7 +119,7 @@ double Calculator::evaluate(string problem){
 					result = trig(val*pi/180, n); 
 				}
 			}
-			values.numEnqueue(result);
+			values.Enqueue(result);
 		}
 
 		//tan
@@ -146,7 +147,7 @@ double Calculator::evaluate(string problem){
 					result = trig(val*pi/180, n);
 				}
 			}
-			values.numEnqueue(result);
+			values.Enqueue(result);
 		}
 		
 		//if arc
@@ -181,7 +182,7 @@ double Calculator::evaluate(string problem){
 					result = trig(val*pi/180, n);
 				}
 			}
-			values.numEnqueue(result);
+			values.Enqueue(result);
 		}
 		//log or ln
 		else if (problem[i] == 'l') {
@@ -213,7 +214,7 @@ double Calculator::evaluate(string problem){
 					result = trig(val, n);
 				}
 			}
-			values.numEnqueue(result);
+			values.Enqueue(result);
 		}
 
 		//if input is number
@@ -234,7 +235,7 @@ double Calculator::evaluate(string problem){
 				}
 			}
 			
-			values.numEnqueue(val); 
+			values.Enqueue(val); 
 			i--; 					//adjust order
 		}
 
@@ -262,13 +263,13 @@ double Calculator::evaluate(string problem){
 					result = sqrt(val); //the difference is in the result
 				}
 			}
-			values.numEnqueue(result);
+			values.Enqueue(result);
 		}
 		
 		//closed bracket, solve inside the bracket
 		else if(problem[i] == ')'){
 			//see if the ops queue is empty and the ops queue is not the open bracket
-			while (!ops.isEmpty() && ops.getRear() != '('){
+			while (!ops.IsEmpty() && ops.getRear() != '('){
 				//take first number 
 				double val1 = values.getRear();
 				values.Dequeue(); 
@@ -281,10 +282,10 @@ double Calculator::evaluate(string problem){
 				char op = ops.getRear();
 				ops.Dequeue(); 
 				//push result to queue
-				values.numEnqueue(operate(val1, val2, op)); 
+				values.Enqueue(operate(val1, val2, op)); 
 			}
 		
-			if (!ops.isEmpty()){
+			if (!ops.IsEmpty()){
 				ops.Dequeue();
 			}
 		}
@@ -292,7 +293,7 @@ double Calculator::evaluate(string problem){
 		//if operator
 		else {
 			//check if the queue is empty and the precendance
-			while (!ops.isEmpty() && precedence(ops.getRear()) >= precedence(problem[i])){
+			while (!ops.IsEmpty() && precedence(ops.getRear()) >= precedence(problem[i])){
 				double val1 = values.getRear();
 				values.Dequeue();
 				
@@ -302,16 +303,16 @@ double Calculator::evaluate(string problem){
 				char op = ops.getRear();
 				ops.Dequeue();
 				//push the result to queue
-				values.numEnqueue(operate(val1, val2, op)); 
+				values.Enqueue(operate(val1, val2, op)); 
 			}
 			
 			//if the precendance smaller, push the operator to queue
-			ops.charEnqueue(problem[i]);
+			ops.characterEnqueue(problem[i]);
 		}
 	}
 	
 	//after arranging the problem, evaluate
-	while(!ops.isEmpty()){
+	while(!ops.IsEmpty()){
 		double val1 = values.getRear();
 		values.Dequeue();
 		
@@ -321,7 +322,7 @@ double Calculator::evaluate(string problem){
 		char op = ops.getRear();
 		ops.Dequeue();
 		
-		values.numEnqueue(operate(val1, val2, op));
+		values.Enqueue(operate(val1, val2, op));
 	}
 	
 	//final result stored in queue
