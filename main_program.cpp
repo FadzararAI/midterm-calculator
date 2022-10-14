@@ -1,6 +1,6 @@
 #include"Calculator.h"
 #include"Queue.h"
-//#include "math_funcs/Calculator.cpp"
+
 
 #include "math_funcs/eval.cpp"
 #include "math_funcs/trigonometry.cpp"
