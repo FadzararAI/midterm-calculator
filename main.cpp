@@ -1,7 +1,13 @@
 #include"Calculator.h"
 #include"Queue.h"
-#include "Calculator.cpp"
+//#include "math_funcs/Calculator.cpp"
+
+#include "math_funcs/eval.cpp"
+#include "math_funcs/trigonometry.cpp"
+#include "math_funcs/precedence.cpp"
+#include "math_funcs/operation.cpp"
 #include "Queue.cpp"
+
 #include<iostream>
 #include<stdlib.h>
 #include<cmath>
