@@ -1,5 +1,5 @@
 #include<iostream>
-#include "Queue1.h"
+#include "Queue.h"
 using namespace std; 
 
 	// To check wheter Queue is empty or not
