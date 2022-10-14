@@ -1,5 +1,5 @@
-#ifndef QUEUE1H
-#define QUEUE1H
+#ifndef QUEUEH
+#define QUEUEH
 #include<iostream>
 #include<stdlib.h>
 #include<cmath>
